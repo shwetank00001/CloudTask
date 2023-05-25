@@ -1,10 +1,13 @@
-const express= require('express')
+const express = require('express')
 const app = express()
+const tasks = require('./routes/tasks')
 
 app.get('/', (req,res)=>{
-    res.send("THIS IS HOME")
+    res.send("ADAD")
 })
 
-app.listen(5000, ()=>{
-    console.log("APP ON PORT 5000...")
+app.use('/api/v1/tasks',tasks)
+
+app.listen(5000,()=>{
+    console.log('SV ON PORT 5000')
 })
