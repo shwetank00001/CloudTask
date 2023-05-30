@@ -1,7 +1,7 @@
 function getAllTasks(req,res){
-    res.send('controller working')
-}
+    res.send("contreoller working")
 
+}
 
 module.exports = {
     getAllTasks
