@@ -1,24 +1,26 @@
 function getAllTasks(req,res){
-    res.send("contreoller working")
+    res.send("COntroller working")
 }
-
-function createTask(req,res){
-    res.send("create tasks")
+function createTasks(req,res){
+    res.json(req.body)
 }
 function getTask(req,res){
-    res.send("get Single task")
+    res.json({id:req.params.id})
 }
 function updateTask(req,res){
-    res.send("update tasks")
+    res.send("task updated")
 }
 function deleteTask(req,res){
-    res.send("delete tasks")
+    res.send("task deleted")
 }
 
-module.exports = {
+
+
+module.exports= {
     getAllTasks,
-    createTask,
+    createTasks,
     getTask,
     updateTask,
-    deleteTask,
+    deleteTask
+
 }
