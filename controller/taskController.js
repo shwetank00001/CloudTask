@@ -5,7 +5,7 @@ function createTasks(req,res){
     res.json(req.body)
 }
 function getTask(req,res){
-    res.json({id:req.params.id})
+    res.json(req.params)
 }
 function updateTask(req,res){
     res.send("task updated")
