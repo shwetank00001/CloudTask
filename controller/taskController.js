@@ -1,3 +1,6 @@
+const Task = require('../models/task') 
+
+
 function getAllTasks(req,res){
     res.send("COntroller working")
 }
