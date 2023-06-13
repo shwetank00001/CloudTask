@@ -5,6 +5,11 @@ const test = require('./routes/testRoute')
 
 require('./db/connect')
 
+
+
+app.use(express.json());
+app.use(express.urlencoded());
+
 // app.use(express.static,('./public'))'
 
 app.get('/', function(req,res){

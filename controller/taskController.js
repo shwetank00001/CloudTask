@@ -4,8 +4,9 @@ const Task = require('../models/task')
 function getAllTasks(req,res){
     res.send("COntroller working")
 }
-function createTasks(req,res){
-    res.json(req.body)
+async function createTasks(req,res){
+    const task = await Task.create(req.body)  // this will create task in mongoose db using async await
+    res.send(task).status(201)
 }
 function getTask(req,res){
     res.json(req.params)
