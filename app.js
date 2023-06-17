@@ -20,5 +20,5 @@ app.use('/api/v1/tasks', tasks)
 app.use('/testing', test)
 
 app.listen(5000, ()=>{
-    console.log("APP ON PORT 000")
+    console.log("APP ON PORT 5000")
 })
