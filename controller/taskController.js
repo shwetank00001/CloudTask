@@ -20,9 +20,22 @@ async function createTasks(req,res){
         res.send({msg:error})
     }
 }
-async function getTask(req,res){
-    const {id:taskID} = req.params
-    const oneTask = await Task.findOne({_id:taskID})
+async function getTask(req,res,next){
+    
+
+    try {
+        const { id: taskID } = req.params
+        const task = await Task.findOne({ _id: taskID })
+        if (!task) {
+          return next(createCustomError(`No task with id : ${taskID}`, 404))
+        }
+        res.status(200).json({ task })
+        
+    } catch (error) {
+        res.send({messgae:error})
+    }
+
+
 }
 
 
