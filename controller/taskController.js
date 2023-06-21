@@ -9,6 +9,8 @@ async function getAllTasks(req,res){
         res.send({msg:error})
     }
 }
+
+
 async function createTasks(req,res){
     try
     {   
@@ -20,9 +22,9 @@ async function createTasks(req,res){
         res.send({msg:error})
     }
 }
-async function getTask(req,res,next){
-    
 
+
+async function getTask(req,res,next){
     try {
         const { id: taskID } = req.params
         const task = await Task.findOne({ _id: taskID })
@@ -39,6 +41,7 @@ async function getTask(req,res,next){
 }
 
 
+// will update this later
 function updateTask(req,res){
     res.send("task updated")
 }
