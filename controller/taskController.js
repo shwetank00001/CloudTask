@@ -26,29 +26,54 @@ async function createTasks(req,res){
 
 async function getTask(req,res,next){
     try {
-        const { id: taskID } = req.params
-        const task = await Task.findOne({ _id: taskID })
-        if (!task) {
-          return next(createCustomError(`No task with id : ${taskID}`, 404))
+        const {item:taskID} = req.params
+        const getItem = await Task.findOne({_id:taskID})
+        if(!getItem){
+            res.status(400).json({msg: `No item exist with this id : ${taskID}`})
         }
-        res.status(200).json({ task })
-        
-    } catch (error) {
-        res.send({messgae:error})
-    }
 
+        res.status(200).json(getItem)  
+      
+    } catch (error) {
+        res.send({msg:"ITEM NOT FOUND"})
+    }
 
 }
 
 
 // will update this later
-function updateTask(req,res){
-    res.send("task updated")
+async function updateTask(req,res){
+    
+    try {
+        const {id:taskID} = req.params
+        const updated = await Task.findOneAndUpdate({_id:taskID}, req.body,{
+            new:true,
+            runValidators:true
+        })
+
+        if(!updated){
+            return res.status(400).json({msg:`no task with id ${taskID}`})
+        }
+
+        res.send({"updated value" :updated})
+    } catch (error) {
+        res.send("item not present")
+    }
+
 }
 
 
-function deleteTask(req,res){
-    res.send("task deleted")
+async function deleteTask(req,res){
+    try {
+        const {id:taskID}  =req.params
+        const deleteItem = await Task.findOneAndDelete({_id:taskID})
+        if(!deleteItem){
+            return res.status(400).json({msg:`no task with id ${taskID}`})
+        }
+        res.send({"value deleted" : deleteItem})
+    } catch (error) {
+        res.send("item not present")
+    }
 }
 
 
@@ -58,6 +83,6 @@ module.exports= {
     createTasks,
     getTask,
     updateTask,
-    deleteTask
+    deleteTask,
 
 }

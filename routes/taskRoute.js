@@ -5,11 +5,12 @@ const {
     createTasks,
     getTask,
     updateTask,
-    deleteTask} = require('../controller/taskController')
+    deleteTask,
+    test} = require('../controller/taskController')
 
 route.get('/', getAllTasks)
 route.post('/', createTasks)
-route.get('/:id', getTask)
+route.get('/:item', getTask)
 route.patch('/:id', updateTask)
 route.delete('/:id', deleteTask)
 
