@@ -15,8 +15,7 @@ const showTasks = async () => {
       loadingDOM.style.visibility = 'hidden'
       return
     }
-    const allTasks = tasks
-      .map((task) => {
+    const allTasks = tasks.map((task) => {
         const { completed, _id: taskID, name } = task
         return `<div class="single-task ${completed && 'task-completed'}">
 <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>

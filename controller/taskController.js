@@ -26,7 +26,7 @@ async function createTasks(req,res){
 
 async function getTask(req,res,next){
     try {
-        const {item:taskID} = req.params
+        const {id:taskID} = req.params
         const getItem = await Task.findOne({_id:taskID})
         if(!getItem){
             res.status(400).json({msg: `No item exist with this id : ${taskID}`})

@@ -6,12 +6,10 @@ const {
     getTask,
     updateTask,
     deleteTask,
-    test} = require('../controller/taskController')
+    test
+} = require('../controller/taskController')
 
-route.get('/', getAllTasks)
-route.post('/', createTasks)
-route.get('/:item', getTask)
-route.patch('/:id', updateTask)
-route.delete('/:id', deleteTask)
+route.get('/', getAllTasks).post('/', createTasks)
+route.get('/:id', getTask).patch('/:id', updateTask).delete('/:id', deleteTask)
 
 module.exports = route
