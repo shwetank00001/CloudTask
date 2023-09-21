@@ -1,13 +1,13 @@
 const Task = require('../models/task') 
+const wrapAsync = require('../middleware/wrapAsync')
 
-
-const getAllTasks = async (req, res) => {
+const getAllTasks = async (req, res, next) => {
     const tasks = await Task.find({})
     res.status(200).json({ tasks })
   }
   
 
-async function createTasks(req,res){
+async function createTasks(req,res , next){
     try
     {   
         const task = await Task.create(req.body)  // this will create task in mongoose db using async await
@@ -15,7 +15,8 @@ async function createTasks(req,res){
     }
     catch(error)
     {
-        res.send({msg:error})
+        return next(new Error("The error is :-" + "\n" + error ))
+        // console.log(error)
     }
 }
 

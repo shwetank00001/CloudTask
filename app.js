@@ -21,7 +21,7 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 
 // app.use(express.static,('./public'))'
 
-app.get('/hi', function(req,res){
+app.get('/', function(req,res){
     res.send("Hi")
 })
 
